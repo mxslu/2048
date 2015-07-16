@@ -7,6 +7,6 @@ package com.mehdi.core;
  *          Creation Date: 2015/07/16
  * @since 1.0.0
  */
-public enum Direction {
-    UP, DOWN, LEFT, RIGHT
+public enum State {
+    WIN, GAME_OVER, NORMAL
 }

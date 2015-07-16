@@ -2,6 +2,7 @@ package com.mehdi;
 
 import com.mehdi.core.Direction;
 import com.mehdi.core.Processor;
+import com.mehdi.core.State;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -20,34 +21,45 @@ public class Launcher {
     }
 
     private static void starter() {
+
         tutorial();
-        Scanner out = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        int dimension = getDimension(out);
+        int dimension = getDimension(scanner);
+        Processor aiCore = new Processor(dimension);
+
+        drawAkaASCIIBoard(aiCore.getCurrentGrid(), aiCore.computeScore());
+
         while (true) {
-            Processor aiCore = new Processor(dimension);
 
-            switch (getDirection(out.findInLine(".").charAt(0))) {
-                case UP:
-                    aiCore.moveUp();
-                    break;
-                case DOWN:
-                    aiCore.moveDown();
-                    break;
-                case LEFT:
-                    aiCore.moveLeft();
-                    break;
-                case RIGHT:
-                    aiCore.moveRight();
-                    break;
-                case NO_where:
-                    continue;
-            }
+            scanner.nextLine();
+            String input  = scanner.nextLine();
 
-            drawAkaASCIIBoard(aiCore.getCurrentGrid());
+            State state = null;
+            aiCore.move(getDirection(input.charAt(0)));
+
+
+            drawAkaASCIIBoard(aiCore.getCurrentGrid(), aiCore.computeScore());
+
+            processCurrentState(state);
+
         }
 
 
+    }
+
+    private static void processCurrentState(State state){
+
+        switch (state){
+            case NORMAL:
+                break;
+            case GAME_OVER:
+                System.err.println("ΧΧΧ GAME OVER ΧΧΧ");
+                System.exit(0);
+            case WIN:
+                System.out.println("*** Congratulation You WON ***");
+                System.exit(0);
+        }
     }
 
     private static void tutorial() {
@@ -79,7 +91,7 @@ public class Launcher {
         return dimension;
     }
 
-    private static void drawAkaASCIIBoard(int[][] grid) {
+    private static void drawAkaASCIIBoard(int[][] grid, int currentScore) {
         System.out.println();
 
         for (int row = 0; row < grid.length; ++row) {
