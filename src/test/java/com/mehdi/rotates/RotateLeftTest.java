@@ -20,7 +20,7 @@ public class RotateLeftTest extends Rotater {
         int grid = 4;
         Processor processor = new Processor(grid);
         int[][] firstGrid = processor.fillEmptyGridCell(2);
-        System.out.println(drawGrid(firstGrid));
+        System.out.println(draw(firstGrid));
         AbstractMove move = new AbstractMove(firstGrid, grid) {
             @Override
             public AbstractMove start() {
@@ -29,6 +29,6 @@ public class RotateLeftTest extends Rotater {
         };
 
         int[][] secondGrid = move.rotateLeft();
-        System.out.println(drawGrid(secondGrid));
+        System.out.println(draw(secondGrid));
     }
 }

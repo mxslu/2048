@@ -1,5 +1,6 @@
 package com.mehdi.pushers;
 
+import com.mehdi.Drawer;
 import com.mehdi.core.Direction;
 import com.mehdi.core.puzzle.AbstractMove;
 
@@ -10,21 +11,10 @@ import com.mehdi.core.puzzle.AbstractMove;
  *          Creation Date: 2015/07/17
  * @since 1.0.0
  */
-public abstract class Pusher {
+public abstract class Pusher extends Drawer {
 
 
     public abstract void doPush();
-
-    public String drawGrid(int[][] grid) {
-        StringBuilder sb = new StringBuilder();
-        for (int row = 0; row < grid.length; ++row) {
-            for (int col = 0; col < grid[row].length; ++col) {
-                sb.append(grid[row][col] + "\t");
-            }
-            sb.append("\n");
-        }
-        return sb.toString();
-    }
 
     public int[][] doRotate(int[][] grid, Direction direction){
 

@@ -15,6 +15,10 @@ public class MoveUp extends AbstractMove {
         super(grid, gridDimension);
     }
 
+    /**
+     * business for moving up the tiles
+     * @return
+     */
     public AbstractMove start() {
         rotateLeft();
         pusher();

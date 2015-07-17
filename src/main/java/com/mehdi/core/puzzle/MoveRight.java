@@ -15,6 +15,10 @@ public class MoveRight extends AbstractMove {
         super(grid, gridDimension);
     }
 
+    /**
+     * business for moving right the tiles
+     * @return
+     */
     public AbstractMove start() {
         rotateLeft();
         rotateLeft();

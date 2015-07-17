@@ -15,6 +15,10 @@ public class MoveLeft extends AbstractMove {
         super(grid, gridDimension);
     }
 
+    /**
+     * business for moving left the tiles
+     * @return
+     */
     public AbstractMove start() {
         pusher();
         return this;

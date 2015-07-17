@@ -15,12 +15,15 @@ public class MoveDown extends AbstractMove {
         super(grid, gridDimension);
     }
 
+    /**
+     * business for moving down the tiles
+     * @return
+     */
     public AbstractMove start() {
         rotateRight();
         pusher();
         rotateLeft();
         return this;
     }
-
 
 }

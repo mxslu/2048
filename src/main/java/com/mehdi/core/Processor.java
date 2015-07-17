@@ -15,11 +15,13 @@ import java.util.Random;
  */
 public class Processor {
 
-    private int[][] mainGrid;
-    private final int gridDimension;
-    private final Random random = new Random();
-    private int score;
     private static final int WINNING_SCORE = 2048;
+
+    private final int DIMENSION;
+    private final Random random = new Random();
+
+    private int[][] mainGrid;
+    private int score;
     private State state = State.NORMAL;
 
     public Processor(int gridDimension) {
@@ -27,7 +29,7 @@ public class Processor {
     }
 
     public Processor(int gridDimension, int initCellFillNumber) {
-        this.gridDimension = gridDimension;
+        this.DIMENSION = gridDimension;
         mainGrid = new int[gridDimension][gridDimension];
         fillEmptyGridCell(initCellFillNumber);
     }
@@ -36,10 +38,10 @@ public class Processor {
     private List<Integer> createEmptyGridList() {
         List<Integer> cellList = new ArrayList<Integer>();
 
-        for (int i = 0; i < gridDimension; ++i) {
-            for (int j = 0; j < gridDimension; ++j) {
+        for (int i = 0; i < DIMENSION; ++i) {
+            for (int j = 0; j < DIMENSION; ++j) {
                 if (mainGrid[i][j] == 0) {
-                    cellList.add(gridDimension * i + j);
+                    cellList.add(DIMENSION * i + j);
                 }
             }
         }
@@ -51,20 +53,25 @@ public class Processor {
     public int[][] fillEmptyGridCell(int noOfCells) {
         for (int i = 0; i < noOfCells; i++) {
             List<Integer> emptyGridList = createEmptyGridList();
-            int size = emptyGridList.size();
+            int emptySeat = emptyGridList.size();
 
-            if (size == 0) {
+            if (emptySeat == 1) {
                 state = State.GAME_OVER;
-            } else {
-                setEmptyGridCell(emptyGridList.get(random.nextInt(size)), (random.nextDouble() < 0.9) ? 2 : 4);
             }
+
+            //Every turn, a new tile will randomly appear in
+            //an empty spot on the board with a value of either 2 or 4. The value 2 will appear with a
+            //probability of 90%
+            int randomNumber =  (random.nextDouble() < 0.9) ? 2 : 4;
+            setEmptyGridCell(emptyGridList.get(random.nextInt(emptySeat)),randomNumber);
+
         }
         return mainGrid;
     }
 
     private void setEmptyGridCell(int randomCell, int randomValue) {
-        int row = randomCell / gridDimension;
-        int col = randomCell % gridDimension;
+        int row = randomCell / DIMENSION;
+        int col = randomCell % DIMENSION;
         if (mainGrid[row][col] == 0) {
             mainGrid[row][col] = randomValue;
         }
@@ -79,16 +86,16 @@ public class Processor {
         AbstractMove movement = null;
         switch (direction) {
             case UP:
-                movement = new MoveUp(getCurrentGrid(), gridDimension);
+                movement = new MoveUp(getCurrentGrid(), DIMENSION);
                 break;
             case DOWN:
-                movement = new MoveDown(getCurrentGrid(), gridDimension);
+                movement = new MoveDown(getCurrentGrid(), DIMENSION);
                 break;
             case LEFT:
-                movement = new MoveLeft(getCurrentGrid(), gridDimension);
+                movement = new MoveLeft(getCurrentGrid(), DIMENSION);
                 break;
             case RIGHT:
-                movement = new MoveRight(getCurrentGrid(), gridDimension);
+                movement = new MoveRight(getCurrentGrid(), DIMENSION);
                 break;
         }
 
