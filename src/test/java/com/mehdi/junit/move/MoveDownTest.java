@@ -1,4 +1,4 @@
-package com.mehdi.move;
+package com.mehdi.junit.move;
 
 import com.mehdi.core.puzzle.AbstractMove;
 import com.mehdi.core.puzzle.MoveDown;

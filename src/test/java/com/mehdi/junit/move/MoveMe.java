@@ -1,6 +1,6 @@
-package com.mehdi.move;
+package com.mehdi.junit.move;
 
-import com.mehdi.Drawer;
+import com.mehdi.junit.Drawer;
 import com.mehdi.core.Processor;
 
 /**

@@ -1,4 +1,4 @@
-package com.mehdi;
+package com.mehdi.junit;
 
 /**
  * @author Mehdi Afsari Kashi

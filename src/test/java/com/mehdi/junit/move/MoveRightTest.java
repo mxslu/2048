@@ -1,7 +1,7 @@
-package com.mehdi.move;
+package com.mehdi.junit.move;
 
 import com.mehdi.core.puzzle.AbstractMove;
-import com.mehdi.core.puzzle.MoveLeft;
+import com.mehdi.core.puzzle.MoveRight;
 import org.junit.Test;
 
 /**
@@ -11,10 +11,11 @@ import org.junit.Test;
  *          Creation Date: 2015/07/17
  * @since 1.0.0
  */
-public class MoveLeftTest extends MoveMe {
+public class MoveRightTest extends MoveMe {
 
-    /**
-     * display moving left behavior
+
+    /*
+     * display moving down behavior
      */
     @Test
     public void move() {
@@ -22,7 +23,7 @@ public class MoveLeftTest extends MoveMe {
         int [][] initGrid = initGrid(dimension, 2);
         System.out.println(draw(initGrid));
 
-        AbstractMove move = new MoveLeft(initGrid, dimension);
+        AbstractMove move = new MoveRight(initGrid, dimension);
         int[][] gridAfterUpMove = move.start().newGrid();
         System.out.println(draw(gridAfterUpMove));
     }

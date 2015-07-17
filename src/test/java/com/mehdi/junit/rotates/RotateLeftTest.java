@@ -1,4 +1,4 @@
-package com.mehdi.rotates;
+package com.mehdi.junit.rotates;
 
 import com.mehdi.core.Processor;
 import com.mehdi.core.puzzle.AbstractMove;
@@ -11,10 +11,12 @@ import org.junit.Test;
  *          Creation Date: 2015/07/17
  * @since 1.0.0
  */
-public class RotateRightTest extends Rotater {
+
+
+public class RotateLeftTest extends Rotater {
 
     /**
-     * display Rotate into right functionality
+     * display Rotate into left functionality
      */
     @Test
     public void doRotate() {
@@ -25,7 +27,7 @@ public class RotateRightTest extends Rotater {
         AbstractMove move = new AbstractMove(firstGrid, grid) {
             @Override
             public AbstractMove start() {
-                return this;
+                  return this;
             }
         };
 

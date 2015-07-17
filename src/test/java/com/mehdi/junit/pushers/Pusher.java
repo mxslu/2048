@@ -1,6 +1,6 @@
-package com.mehdi.pushers;
+package com.mehdi.junit.pushers;
 
-import com.mehdi.Drawer;
+import com.mehdi.junit.Drawer;
 import com.mehdi.core.Direction;
 import com.mehdi.core.puzzle.AbstractMove;
 

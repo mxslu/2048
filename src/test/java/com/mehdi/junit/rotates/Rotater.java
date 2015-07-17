@@ -1,6 +1,6 @@
-package com.mehdi.rotates;
+package com.mehdi.junit.rotates;
 
-import com.mehdi.Drawer;
+import com.mehdi.junit.Drawer;
 
 /**
  * @author Mehdi Afsari Kashi
