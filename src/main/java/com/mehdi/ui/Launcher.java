@@ -158,7 +158,7 @@ public class Launcher {
             }
             System.out.println();
         }
-        System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
     /**

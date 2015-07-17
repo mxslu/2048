@@ -30,7 +30,7 @@
                <artifactId>exec-maven-plugin</artifactId>
                <version>1.1</version>
                <configuration>
-                   <mainClass>com.mehdi.Launcher</mainClass>
+                   <mainClass>com.mehdi.ui.Launcher</mainClass>
                </configuration>
            </plugin>
        </plugins>
