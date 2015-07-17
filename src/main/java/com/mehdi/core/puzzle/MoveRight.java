@@ -9,13 +9,13 @@ import com.mehdi.core.State;
  *          Creation Date: 2015/07/16
  * @since 1.0.0
  */
-public class MoveRight extends Move {
+public class MoveRight extends AbstractMove {
 
     public MoveRight(int[][] grid, int gridDimension) {
         super(grid, gridDimension);
     }
 
-    public State move() {
+    public State doMove() {
         return null;
     }
 }

@@ -9,14 +9,16 @@ import com.mehdi.core.State;
  *          Creation Date: 2015/07/16
  * @since 1.0.0
  */
-public class MoveUp extends Move {
+public class MoveUp extends AbstractMove {
 
     public MoveUp(int[][] grid, int gridDimension) {
         super(grid, gridDimension);
     }
 
-    public State move() {
-
+    public State doMove() {
+        rotateLeft();
+        pusher();
+        rotateLeft();
         return null;
     }
 }

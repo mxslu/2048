@@ -26,9 +26,9 @@ public class Launcher {
         Scanner scanner = new Scanner(System.in);
 
         int dimension = getDimension(scanner);
-        Processor aiCore = new Processor(dimension);
+        Processor aiCore = new Processor(dimension, 2);
 
-        drawAkaASCIIBoard(aiCore.getCurrentGrid(), aiCore.computeScore());
+        drawAkaASCIIBoard(aiCore.getCurrentGrid(), aiCore.totalScore());
 
         while (true) {
 
@@ -39,7 +39,7 @@ public class Launcher {
             aiCore.move(getDirection(input.charAt(0)));
 
 
-            drawAkaASCIIBoard(aiCore.getCurrentGrid(), aiCore.computeScore());
+            drawAkaASCIIBoard(aiCore.getCurrentGrid(), aiCore.totalScore());
 
             processCurrentState(state);
 

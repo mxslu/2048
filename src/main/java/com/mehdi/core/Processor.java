@@ -18,11 +18,17 @@ public class Processor {
     private int[][] mainGrid;
     private final int gridDimension;
     private final Random random = new Random();
+    private int score;
+    private State state;
 
     public Processor(int gridDimension) {
+        this(gridDimension, 0);
+    }
+
+    public Processor(int gridDimension, int initCellFillNumber){
         this.gridDimension = gridDimension;
         mainGrid = new int[gridDimension][gridDimension];
-        fillEmptyGridCell();
+        fillEmptyGridCell(initCellFillNumber);
     }
 
 
@@ -41,16 +47,18 @@ public class Processor {
     }
 
 
-    private boolean fillEmptyGridCell() {
-        List<Integer> emptyGridList = createEmptyGridList();
-        int size = emptyGridList.size();
+    public int[][] fillEmptyGridCell(int noOfCells) {
+        for (int i = 0; i < noOfCells; i++) {
+            List<Integer> emptyGridList = createEmptyGridList();
+            int size = emptyGridList.size();
 
-        if (size == 0) {
-            return false;
+            if (size == 0) {
+                state = State.GAME_OVER;
+            } else {
+                setEmptyGridCell(emptyGridList.get(random.nextInt(size)), (random.nextDouble() < 0.9) ? 2 : 4);
+            }
         }
-
-        setEmptyGridCell(emptyGridList.get(random.nextInt(size)), (random.nextDouble() < 0.9) ? 2 : 4);
-        return true;
+        return mainGrid;
     }
 
     private void setEmptyGridCell(int randomCell, int randomValue) {
@@ -67,29 +75,30 @@ public class Processor {
     }
 
     public State move(Direction direction) {
-        State state = null;
-        Move move = null;
+        AbstractMove movement = null;
         switch (direction) {
             case UP:
-                move = new MoveUp(getCurrentGrid(), gridDimension);
+                movement = new MoveUp(getCurrentGrid(), gridDimension);
                 break;
             case DOWN:
-                move = new MoveDown(getCurrentGrid(), gridDimension);
+                movement = new MoveDown(getCurrentGrid(), gridDimension);
                 break;
             case LEFT:
-                move = new MoveLeft(getCurrentGrid(), gridDimension);
+                movement = new MoveLeft(getCurrentGrid(), gridDimension);
                 break;
             case RIGHT:
-                move = new MoveRight(getCurrentGrid(), gridDimension);
+                movement = new MoveRight(getCurrentGrid(), gridDimension);
                 break;
         }
 
-        mainGrid = move.newGrid();
-        return null;
+        mainGrid = movement.newGrid();
+        score += movement.getPoints();
+        return movement.doMove();
+
     }
 
-    public int computeScore() {
-        return 0;
+    public int totalScore() {
+        return score;
     }
 
 
