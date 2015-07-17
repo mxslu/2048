@@ -15,6 +15,9 @@ import org.junit.Test;
 
 public class RotateLeftTest extends Rotater {
 
+    /**
+     * display Rotate into left functionality
+     */
     @Test
     public void doRotate() {
         int grid = 4;

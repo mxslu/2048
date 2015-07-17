@@ -13,6 +13,9 @@ import org.junit.Test;
  */
 public class MoveLeftTest extends MoveMe {
 
+    /**
+     * display moving left behavior
+     */
     @Test
     public void move() {
         int dimension = 4;

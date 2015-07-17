@@ -16,6 +16,12 @@ public abstract class Pusher extends Drawer {
 
     public abstract void doPush();
 
+    /**
+     * get a grid and rotate direction and rotate it
+     * @param grid
+     * @param direction
+     * @return
+     */
     public int[][] doRotate(int[][] grid, Direction direction){
 
         AbstractMove move = new AbstractMove(grid, grid.length) {
@@ -48,6 +54,12 @@ public abstract class Pusher extends Drawer {
         return gridRotated;
     }
 
+    /**
+     * use pusher method inside AbstractMove#pusher
+     * and return new grid acquired after push
+     * @param grid
+     * @return
+     */
     public int[][] pushLeft(int[][] grid){
         AbstractMove move = new AbstractMove(grid, grid.length) {
             @Override

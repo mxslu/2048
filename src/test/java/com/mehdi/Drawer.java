@@ -9,6 +9,11 @@ package com.mehdi;
  */
 public abstract class Drawer {
 
+    /**
+     * get a grid and provide drawing for displaying somewhere
+     * @param grid
+     * @return
+     */
     public final String draw(int[][] grid) {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < grid.length; ++row) {

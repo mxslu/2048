@@ -12,6 +12,7 @@ import com.mehdi.core.Processor;
  */
 public abstract class MoveMe extends Drawer {
 
+    //get an initial grid
     public int[][] initGrid (int gridDimension, int noOfFillCell){
         Processor processor = new Processor(gridDimension, noOfFillCell);
         return processor.getCurrentGrid();

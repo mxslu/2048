@@ -13,8 +13,10 @@ import org.junit.Test;
  */
 public class PushLeftTest extends Pusher {
 
+    /**
+     * display push functionality
+     */
     @Test
-    @Override
     public void doPush() {
 
         //Push left after rotating to 'LEFT'

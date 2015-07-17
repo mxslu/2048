@@ -13,6 +13,10 @@ import org.junit.Test;
  */
 public class MoveUpTest extends MoveMe {
 
+
+    /*
+     * display moving down behavior
+     */
     @Test
     public void move() {
         int dimension = 4;

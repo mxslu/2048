@@ -13,8 +13,12 @@ import org.junit.Test;
  */
 public class MoveDownTest extends MoveMe{
 
+    /*
+     * display moving down behavior
+     */
     @Test
     public void move() {
+
         int dimension = 4;
         int [][] initGrid = initGrid(dimension, 2);
         System.out.println(draw(initGrid));
