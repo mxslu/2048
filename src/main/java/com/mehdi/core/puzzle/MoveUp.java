@@ -15,10 +15,10 @@ public class MoveUp extends AbstractMove {
         super(grid, gridDimension);
     }
 
-    public State doMove() {
+    public AbstractMove start() {
         rotateLeft();
         pusher();
-        rotateLeft();
-        return null;
+        rotateRight();
+        return this;
     }
 }

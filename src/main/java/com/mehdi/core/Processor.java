@@ -19,13 +19,14 @@ public class Processor {
     private final int gridDimension;
     private final Random random = new Random();
     private int score;
-    private State state;
+    private static final int WINNING_SCORE = 2048;
+    private State state = State.NORMAL;
 
     public Processor(int gridDimension) {
         this(gridDimension, 0);
     }
 
-    public Processor(int gridDimension, int initCellFillNumber){
+    public Processor(int gridDimension, int initCellFillNumber) {
         this.gridDimension = gridDimension;
         mainGrid = new int[gridDimension][gridDimension];
         fillEmptyGridCell(initCellFillNumber);
@@ -91,11 +92,25 @@ public class Processor {
                 break;
         }
 
-        mainGrid = movement.newGrid();
-        score += movement.getPoints();
-        return movement.doMove();
+        AbstractMove ab = movement.start();
+        mainGrid = ab.newGrid();
+        score += ab.getPoints();
 
+        fillEmptyGridCell(1);
+        return getState();
     }
+
+    private State getState() {
+        if (state == State.GAME_OVER) {
+            return state;
+        }
+
+        if (score > WINNING_SCORE) {
+            return State.WIN;
+        }
+        return state;
+    }
+
 
     public int totalScore() {
         return score;

@@ -29,18 +29,18 @@ public class Launcher {
         Processor aiCore = new Processor(dimension, 2);
 
         drawAkaASCIIBoard(aiCore.getCurrentGrid(), aiCore.totalScore());
-
+        State state = null;
         while (true) {
-
             scanner.nextLine();
             String input  = scanner.nextLine();
 
-            State state = null;
-            aiCore.move(getDirection(input.charAt(0)));
+            Direction direction = getDirection(input.charAt(0));
+            if(direction == null){
+              continue;
+            }
 
-
+            state = aiCore.move(direction);
             drawAkaASCIIBoard(aiCore.getCurrentGrid(), aiCore.totalScore());
-
             processCurrentState(state);
 
         }
@@ -94,6 +94,8 @@ public class Launcher {
     private static void drawAkaASCIIBoard(int[][] grid, int currentScore) {
         System.out.println();
 
+        System.out.println("Score:  " + currentScore +"\n");
+
         for (int row = 0; row < grid.length; ++row) {
             for (int col = 0; col < grid[row].length; ++col) {
                 System.out.print(grid[row][col] + "\t");
@@ -117,7 +119,7 @@ public class Launcher {
             System.out.println("See You ~");
             System.exit(0);
         } else {
-            System.out.println("You input '" + inputChar + "' is a wrong input ~");
+            System.err.println("You input '" + inputChar + "' is a wrong input ~");
         }
         return direction;
     }

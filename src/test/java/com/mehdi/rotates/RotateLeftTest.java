@@ -1,7 +1,6 @@
 package com.mehdi.rotates;
 
 import com.mehdi.core.Processor;
-import com.mehdi.core.State;
 import com.mehdi.core.puzzle.AbstractMove;
 import org.junit.Test;
 
@@ -24,8 +23,8 @@ public class RotateLeftTest extends Rotater {
         System.out.println(drawGrid(firstGrid));
         AbstractMove move = new AbstractMove(firstGrid, grid) {
             @Override
-            public State doMove() {
-                return null;
+            public AbstractMove start() {
+                  return this;
             }
         };
 

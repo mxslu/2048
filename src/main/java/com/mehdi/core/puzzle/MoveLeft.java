@@ -15,7 +15,8 @@ public class MoveLeft extends AbstractMove {
         super(grid, gridDimension);
     }
 
-    public State doMove() {
-        return null;
+    public AbstractMove start() {
+        pusher();
+        return this;
     }
 }

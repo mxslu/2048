@@ -15,7 +15,12 @@ public class MoveRight extends AbstractMove {
         super(grid, gridDimension);
     }
 
-    public State doMove() {
-        return null;
+    public AbstractMove start() {
+        rotateLeft();
+        rotateLeft();
+        pusher();
+        rotateRight();
+        rotateRight();
+        return this;
     }
 }

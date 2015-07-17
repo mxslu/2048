@@ -20,7 +20,7 @@ public abstract class AbstractMove {
         this.grid = grid;
     }
 
-    public abstract State doMove();
+    public abstract AbstractMove start();
 
     public final int[][] pusher() {
         //from right to left check none value zero for pushing to next cell
@@ -31,7 +31,7 @@ public abstract class AbstractMove {
                     continue;
                 }
 
-                //doMove to the left if its not the first cell value and one cell left has 0 value
+                //start to the left if its not the first cell value and one cell left has 0 value
                 int preCellPosition = col - 1;
                 int lastMergePosition = 0;
 
@@ -41,8 +41,8 @@ public abstract class AbstractMove {
 
                 int preCellValue =  grid[row][preCellPosition];
 
-                if (preCellPosition == col) {//we can't doMove this at all
-                } else if (preCellValue == 0) { //doMove to empty value
+                if (preCellPosition == col) {//we can't start this at all
+                } else if (preCellValue == 0) { //start to empty value
                     grid[row][preCellPosition] = currentCellValue;
                     grid[row][col] = 0;
                 } else if (preCellValue == currentCellValue) {

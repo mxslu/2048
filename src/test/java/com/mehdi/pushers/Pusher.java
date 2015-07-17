@@ -1,7 +1,6 @@
 package com.mehdi.pushers;
 
 import com.mehdi.core.Direction;
-import com.mehdi.core.State;
 import com.mehdi.core.puzzle.AbstractMove;
 
 /**
@@ -30,8 +29,9 @@ public abstract class Pusher {
     public int[][] doRotate(int[][] grid, Direction direction){
 
         AbstractMove move = new AbstractMove(grid, grid.length) {
+
             @Override
-            public State doMove() {
+            public AbstractMove start() {
                 return null;
             }
         };
@@ -61,8 +61,8 @@ public abstract class Pusher {
     public int[][] pushLeft(int[][] grid){
         AbstractMove move = new AbstractMove(grid, grid.length) {
             @Override
-            public State doMove() {
-                return null;
+            public AbstractMove start() {
+               return this;
             }
         };
         return move.pusher();
